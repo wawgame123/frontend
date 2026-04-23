@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мое Резюме и Портфолио</title>
+    <style>
+        @import url('css/style.css');
+        @import url('css/forms.css');
+    </style>
+</head>
+<body>
+    
+    <header>
+        <h1>Тупик Павел</h1>
+        <p class="subtitle">Привет! Я начинающий специалист. Здесь вы найдете информацию о моем опыте и проектах.</p>
+    </header>
+
+    <section>
+        <h2>Обо мне</h2>
+            <p>Я изучаю веб-разработку в политехническом колледже на 3 курсе специальности разработка и сопровождение программного обеспечения. Закончил среднюю школу №38 имени Кирилла Туровского в 2023 году. </p>
+        </section>
+
+    <section>
+        <h2>Мои навыки</h2>
+        <ol>
+            <li>Основы HTML</li>
+            <li>Основы CSS </li>
+            <li>Разработка программных продуктов на C++ </li>
+            <li>Разработка программных продуктов на C# </li>
+            <li>Разработка программных продуктов на python </li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>Мои проекты:</h2>
+        <ol type="A" class="projects-list">
+            <li>Игровое приложение "ГО"(C++)</li>
+            <li>Игровое приложение "Xakeri"(C++)</li>
+            <li>Игровое приложение "The binariki"(C#)</li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>Полезные ссылки</h2>    
+        <p>Мои учебные материалы и интересы:</p>
+        <ul class="links">
+            <li><a href="lab2.html">Сайт шпаргалка по теории</a></li>
+            <li><a href="lab3.html">Сайт хобби и увлечения</a></li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Смешные коты</h2>
+        <p>Ниже представлены фото смешных котов чтобы вайбило:</p>
+        <div class="cat-gallery">
+            <img src="/image/vibecat1.jpg" alt="Вайбовый кот 1">
+            <img src="/image/vibecat2.jfif" alt="Вайбовый кот 2">
+            <img src="/image/vibecat3.jfif" alt="Вайбовый кот 3">
+        </div>
+    </section>
+
+    <hr>
+
+    <section>
+        <h2>Обратная связь</h2>
+        <form>
+            <fieldset>
+                <legend>Напишите мне сообщение</legend>
+                
+                <div class="form-group">
+                    <label>Имя:</label>
+                    <input type="text" name="name" placeholder="Введите ваше имя" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Пароль (для авторизации):</label>
+                    <input type="password" name="pass" placeholder="Ваш пароль">
+                </div>
+
+                <div class="form-group">
+                    <label>Тема обращения:</label>
+                    <input type="text" name="tema" placeholder="Тема обращения">
+                </div>
+
+                <div class="form-group">
+                    <label>Ваш пол:</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="sex" value="m"> Мужской</label>
+                        <label><input type="radio" name="sex" value="f"> Женский</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Срочность:</label>
+                    <select name="subject">
+                        <option value="1">Срочно (24 часа)</option>
+                        <option value="2">Не очень срочно (1-2 дня)</option>
+                        <option value="3">Бессрочно (до 7 дней)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Ваше сообщение:</label>
+                    <textarea name="message" rows="5" placeholder="Текст вашего сообщения..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Прикрепить файл:</label>
+                    <input type="file" name="attachment">
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="spam" checked> Подписаться на новости
+                    </label>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit">Отправить сообщение</button>
+                    <button type="reset" class="btn-reset">Сбросить</button>
+                </div>
+            </fieldset>
+        </form>
+    </section>
+
+</body>
+</html>
