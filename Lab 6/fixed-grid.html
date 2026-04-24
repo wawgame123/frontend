@@ -2,70 +2,178 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Фиксированная вёрстка (Grid)</title>
+    <title>Фиксированная вёрстка (Grid) - Вариант 0 | Тупик П.Н.</title>
     <style>
+        /* Базовые настройки */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         body {
-            background: #f0f0f0;
-            padding: 20px;
+            background: #0f172a;
+            color: #f1f5f9;
+            padding: 40px 20px;
+            font-family: 'Segoe UI', system-ui, sans-serif;
         }
+
+        /* ФИКСИРОВАННЫЙ КОНТЕЙНЕР */
         .wrapper {
             width: 1280px;
             margin: 0 auto;
-            background: white;
+            background: #1e293b;
+            border: 1px solid #334155;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            overflow: hidden;
         }
-        .header, .footer {
-            background: #2c3e50;
-            color: white;
+
+        /* ШАПКА */
+        .header {
+            background: #0f172a;
+            color: #38bdf8;
             text-align: center;
-            padding: 20px;
+            padding: 30px;
+            border-bottom: 2px solid #38bdf8;
         }
+        .header h1 {
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .student-name {
+            font-size: 14px;
+            color: #fbbf24;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+
+        /* НАВИГАЦИЯ */
         .nav {
-            background: #27ae60;
+            background: #334155;
             text-align: center;
             padding: 15px;
+            border-bottom: 1px solid #475569;
         }
         .nav a {
-            color: white;
+            color: #f1f5f9;
             margin: 0 15px;
             text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
         }
+        .nav a:hover {
+            color: #38bdf8;
+        }
+
+        /* GRID КОНТЕЙНЕР (Свойства 1-10) */
         .grid {
+            /* 1 display: */
             display: grid;
+            /* 2 grid-template-columns: фиксированная колонка 500px + остаток */
             grid-template-columns: 500px 1fr;
+            /* 3 grid-template-rows: */
+            grid-template-rows: repeat(3, auto);
+            /* 4 grid-template-areas: */
+            grid-template-areas: none;
+            /* 5 column-gap: */
+            column-gap: 0px;
+            /* 6 row-gap: */
+            row-gap: 0px;
+            /* 7 gap: */
+            gap: 0px;
+            /* 8 justify-items: */
+            justify-items: stretch;
+            /* 9 align-items: */
+            align-items: stretch;
+            /* 10 place-items: */
+            place-items: stretch;
+            
+            background: #1e293b;
         }
+
+        /* GRID ЭЛЕМЕНТЫ (Свойства 11-15) */
         .grid-item {
-            background: #ecf0f1;
+            background: #0f172a;
             text-align: center;
             padding: 60px 0;
-            border: 1px solid #bdc3c7;
+            border: 1px solid #1e293b;
+            color: #38bdf8;
+            font-weight: bold;
+            transition: background 0.3s;
+
+            /* 11 grid-column: */
+            grid-column: auto;
+            /* 12 grid-row: */
+            grid-row: auto;
+            /* 13 justify-self: */
+            justify-self: stretch;
+            /* 14 align-self: */
+            align-self: auto;
+            /* 15 place-self: */
+            place-self: auto;
+        }
+
+        /* Стилизация четных блоков для визуального разделения */
+        .grid-item:nth-child(even) {
+            background: #111827;
+            color: #fbbf24;
+        }
+
+        .grid-item:hover {
+            background: #1e293b;
+        }
+
+        /* ПОДВАЛ */
+        .footer {
+            background: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 20px;
+            font-size: 13px;
+            border-top: 1px solid #334155;
+        }
+        
+        .footer-info {
+            background: #334155;
+            padding: 10px;
+            text-align: center;
+            font-size: 12px;
+            color: #cbd5e1;
         }
     </style>
 </head>
 <body>
     <div class="wrapper">
-        <div class="header">Шапка (логотип)</div>
-        <div class="nav">
-            <a href="#">Главная</a>
-            <a href="#">О нас</a>
-            <a href="#">Услуги</a>
-            <a href="#">Портфолио</a>
-            <a href="#">Блог</a>
-            <a href="#">Контакты</a>
-        </div>
+        <header class="header">
+            <h1>ЛАБОРАТОРНАЯ РАБОТА №5</h1>
+            <div class="student-name">Тупик Павел Николаевич | Группа ПЗТ-43 | Вариант 0</div>
+        </header>
+        
+        <nav class="nav">
+            <a href="#">ГЛАВНАЯ</a>
+            <a href="#">О НАС</a>
+            <a href="#">УСЛУГИ</a>
+            <a href="#">ПОРТФОЛИО</a>
+            <a href="#">КОНТАКТЫ</a>
+        </nav>
+
         <div class="grid">
-            <div class="grid-item">1 (500px)</div>
-            <div class="grid-item">4 (оставшаяся часть)</div>
-            <div class="grid-item">2 (500px)</div>
-            <div class="grid-item">5 (оставшаяся часть)</div>
-            <div class="grid-item">3 (500px)</div>
-            <div class="grid-item">6 (оставшаяся часть)</div>
+            <div class="grid-item">БЛОК 1 (500px)</div>
+            <div class="grid-item">БЛОК 4 (ОСТАТОК)</div>
+            <div class="grid-item">БЛОК 2 (500px)</div>
+            <div class="grid-item">БЛОК 5 (ОСТАТОК)</div>
+            <div class="grid-item">БЛОК 3 (500px)</div>
+            <div class="grid-item">БЛОК 6 (ОСТАТОК)</div>
         </div>
-        <div class="footer">© 2026 Фиксированная вёрстка (Grid)</div>
+
+        <footer class="footer">
+            <p>© 2026 Фиксированная вёрстка на Grid Layout</p>
+        </footer>
+        
+        <div class="footer-info">
+            Разработка: Тупик Павел Николаевич (ПЗТ-43). В CSS применены 15 свойств Grid.
+        </div>
     </div>
 </body>
 </html>

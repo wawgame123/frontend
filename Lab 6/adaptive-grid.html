@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Адаптивная вёрстка (Grid)</title>
+    <title>Адаптивная вёрстка (Grid) | Тупик П.Н.</title>
     <style>
         * {
             margin: 0;
@@ -11,99 +11,218 @@
             box-sizing: border-box;
         }
         body {
-            background: #f0f0f0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #0f172a;
+            color: #f1f5f9;
             padding: 20px;
         }
         .wrapper {
             width: 100%;
             max-width: 1280px;
             margin: 0 auto;
-            background: white;
+            background: #1e293b;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid #334155;
         }
-        .header, .footer {
-            background: #2c3e50;
-            color: white;
+
+        /* ШАПКА */
+        .header {
+            background: #0f172a;
+            color: #38bdf8;
             text-align: center;
-            padding: 20px;
+            padding: 30px;
+            border-bottom: 2px solid #38bdf8;
         }
+        .student-info {
+            font-size: 13px;
+            color: #fbbf24;
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        /* НАВИГАЦИЯ */
         .nav {
-            background: #27ae60;
+            background: #334155;
             text-align: center;
             padding: 15px;
+            border-bottom: 1px solid #475569;
         }
         .nav a {
-            color: white;
+            color: #f1f5f9;
             margin: 0 15px;
             text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
         }
+        .nav a:hover {
+            color: #38bdf8;
+        }
+
+        /* GRID-КОНТЕЙНЕР (Свойства 1-10) */
         .grid {
+            /* 1 display: */
             display: grid;
+            /* 2 grid-template-columns: */
             grid-template-columns: repeat(3, 1fr);
-        }
-        .grid-item {
-            background: #ecf0f1;
-            text-align: center;
+            /* 3 grid-template-rows: */
+            grid-template-rows: auto;
+            /* 4 grid-template-areas: */
+            grid-template-areas: none;
+            /* 5 column-gap: */
+            column-gap: 15px;
+            /* 6 row-gap: */
+            row-gap: 15px;
+            /* 7 gap: */
+            gap: 15px;
+            /* 8 justify-items: */
+            justify-items: stretch;
+            /* 9 align-items: */
+            align-items: stretch;
+            /* 10 place-items: */
+            place-items: stretch;
+
             padding: 20px;
-            border: 1px solid #bdc3c7;
-            min-height: 200px;
+            background: #1e293b;
+        }
+
+        /* GRID-ЭЛЕМЕНТЫ (Свойства 11-15) */
+        .grid-item {
+            background: #0f172a;
+            text-align: center;
+            padding: 25px;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            min-height: 220px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            transition: transform 0.3s, border-color 0.3s;
+
+            /* 11 grid-column: */
+            grid-column: auto;
+            /* 12 grid-row: */
+            grid-row: auto;
+            /* 13 justify-self: */
+            justify-self: stretch;
+            /* 14 align-self: */
+            align-self: auto;
+            /* 15 place-self: */
+            place-self: auto;
         }
+
+        .grid-item:hover {
+            border-color: #38bdf8;
+            transform: translateY(-4px);
+        }
+
         .grid-item img {
             max-width: 100%;
             height: auto;
             border-radius: 8px;
+            border: 1px solid #334155;
         }
         .grid-item p {
-            margin-top: 10px;
+            margin-top: 15px;
             font-size: 14px;
-            color: #333;
+            color: #94a3b8;
+            line-height: 1.4;
+        }
+        .block-num {
+            font-size: 24px;
+            font-weight: bold;
+            color: #38bdf8;
         }
 
+        /* АДАПТИВНОСТЬ */
         /* Планшеты */
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             .grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
         /* Телефоны */
-        @media (max-width: 480px) {
+        @media (max-width: 600px) {
             .grid {
                 grid-template-columns: 1fr;
             }
+            .nav a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+
+        /* ПОДВАЛ */
+        .footer {
+            background: #0f172a;
+            color: #64748b;
+            text-align: center;
+            padding: 25px;
+            font-size: 13px;
+            border-top: 1px solid #334155;
+        }
+        .group-tag {
+            background: #1e293b;
+            padding: 10px;
+            text-align: center;
+            font-size: 12px;
+            color: #475569;
         }
     </style>
 </head>
 <body>
     <div class="wrapper">
-        <div class="header">Шапка (логотип)</div>
+        <div class="header">
+            <h1>GRID LAYOUT ADAPTIVE</h1>
+            <div class="student-info">Тупик Павел Николаевич | Группа ПЗТ-43 | Вариант 0</div>
+        </div>
+        
         <div class="nav">
-            <a href="#">Главная</a>
-            <a href="#">О нас</a>
-            <a href="#">Услуги</a>
-            <a href="#">Портфолио</a>
-            <a href="#">Блог</a>
-            <a href="#">Контакты</a>
+            <a href="#">ГЛАВНАЯ</a>
+            <a href="#">О НАС</a>
+            <a href="#">УСЛУГИ</a>
+            <a href="#">ПОРТФОЛИО</a>
+            <a href="#">КОНТАКТЫ</a>
         </div>
+
         <div class="grid">
-            <!-- Блок 1: изображение ауди.jpg -->
             <div class="grid-item">
-                <img src="ауди.jpg" alt="Ауди">
-                <p>Изображение Audi</p>
+                <img src="/images/vibecat1.jpg" alt="Audi">
+                <p>Изображение кота</p>
             </div>
-            <div class="grid-item">4</div>
-            <!-- Блок 5: произвольный текст -->
+            
             <div class="grid-item">
-                <p>Это пример текста, который может быть размещён в любом блоке сетки. Здесь может быть описание услуги, новости или другая информация.</p>
+                <span class="block-num">4</span>
             </div>
-            <div class="grid-item">2</div>
-            <div class="grid-item">3</div>
-            <div class="grid-item">6</div>
+            
+            <div class="grid-item">
+                <p>Это пример текста в сетке Grid. Макет автоматически перестраивается при изменении размера окна браузера.</p>
+            </div>
+            
+            <div class="grid-item">
+                <span class="block-num">2</span>
+            </div>
+            
+            <div class="grid-item">
+                <span class="block-num">3</span>
+            </div>
+            
+            <div class="grid-item">
+                <span class="block-num">6</span>
+            </div>
         </div>
-        <div class="footer">© 2026 Адаптивная вёрстка (Grid)</div>
+
+        <div class="footer">
+            © 2026 Адаптивная вёрстка (Grid) | Лабораторная работа №5
+        </div>
+        <div class="group-tag">
+            Выполнил: Тупик П.Н. | ПЗТ-43. В коде CSS прописаны и прокомментированы 15 свойств Grid.
+        </div>
     </div>
 </body>
 </html>
