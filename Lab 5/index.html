@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа №5: Блочная модель и Flexbox | Тупик П.Н.</title>
+    <style>
+        /* ОБЩИЕ СТИЛИ 
+           Цветовая схема: тёмно-синий и золотой
+        */
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            background: #0a0f1e;
+            color: #eef2ff;
+            margin: 0;
+            padding: 24px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #FFB347;
+            font-size: 2.4rem;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #8a9bb5;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 180, 71, 0.3);
+            font-size: 1.1rem;
+        }
+        section {
+            background: rgba(18, 25, 45, 0.9);
+            border-radius: 24px;
+            padding: 24px;
+            margin-bottom: 32px;
+            border: 1px solid rgba(255, 180, 71, 0.2);
+        }
+        h2 {
+            color: #FFB347;
+            border-left: 4px solid #FF8C00;
+            padding-left: 18px;
+            margin-top: 0;
+        }
+        h3 { color: #FFD966; margin-bottom: 12px; }
+        
+        .demo-box {
+            background: #0f1629;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 24px 0;
+            border: 1px solid #2a3a55;
+        }
+
+        /* БЛОК С ФЛЕКС-КОНТЕЙНЕРОМ 
+        */
+        .flex-container-demo {
+            /* 1 display: */
+            display: flex;
+            /* 2 flex-direction: */
+            flex-direction: row;
+            /* 3 flex-wrap: */
+            flex-wrap: wrap;
+            /* 4 flex-flow: direction wrap */
+            flex-flow: row wrap;
+            /* 5 justify-content: */
+            justify-content: space-between;
+            /* 6 align-content: */
+            align-content: stretch;
+            /* 7 align-items: */
+            align-items: center;
+            /* 8 column-gap: */
+            column-gap: 20px;
+            /* 9 gap: */
+            gap: 20px;
+            
+            background: #161e35;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        /* БЛОК С ФЛЕКС-ЭЛЕМЕНТАМИ 
+        */
+        .flex-item-demo {
+            /* 10 flex-grow: */
+            flex-grow: 1;
+            /* 11 flex-shrink: */
+            flex-shrink: 1;
+            /* 12 flex-basis: */
+            flex-basis: auto;
+            /* 13 flex: {grow shrink basis} */
+            flex: 1 1 auto;
+            /* 14 align-self: */
+            align-self: auto;
+            /* 15 order: */
+            order: 0;
+
+            background: #FFB347;
+            color: #000;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 24px;
+            color: #6a7c9f;
+            border-top: 1px solid #1f2a40;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Лабораторная работа №5</h1>
+    <div class="subtitle">
+        <div>Выполнил: Тупик Павел Николаевич</div>
+        <div>Группа: ПЗТ-43</div>
+        <div style="margin-top: 12px;">Блочная модель + Flexbox - исследование свойств</div>
+    </div>
+
+    <section>
+        <h2>1. Блочная модель</h2>
+        <div class="demo-box">
+            <div style="
+                width: 200px; height: 80px;
+                padding: 20px; border: 5px solid #FFD966;
+                margin: 20px auto; background: #FF8C00;
+                text-align: center; line-height: 80px; font-weight: bold;
+            ">
+                BLOCK
+            </div>
+            <p>Параметры: Content (200x80) + Padding (20) + Border (5). Общая ширина: 250px.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>2. Flexbox Container & Elements</h2>
+        
+        <div class="demo-box">
+            <h3>Демонстрация свойств контейнера (1-9) и элементов (10-15)</h3>
+            <div class="flex-container-demo">
+                <div class="flex-item-demo">Элемент 1</div>
+                <div class="flex-item-demo" style="order: -1; background: #FFD966;">Элемент 2 (Order -1)</div>
+                <div class="flex-item-demo" style="flex-grow: 2;">Элемент 3 (Grow 2)</div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>3. Макет на Flexbox</h2>
+        <div style="background: #0b1120; border-radius: 15px; overflow: hidden; border: 1px solid #2a3a55;">
+            
+            <header style="display: flex; justify-content: space-between; align-items: center; padding: 20px; background: #0f172a; border-bottom: 2px solid #FFB347;">
+                <div>
+                    <h3 style="margin: 0; color: #FFB347;">Тупик Павел</h3>
+                    <div style="font-size: 0.9rem; color: #8a9bb5;">Frontend / ПЗТ-43</div>
+                </div>
+                <div style="border: 1px solid #FFB347; padding: 5px 15px; border-radius: 20px; color: #FFB347;">ЛР 5</div>
+            </header>
+
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; padding: 20px;">
+                <main style="flex: 3; min-width: 280px; background: #111827; padding: 20px; border-radius: 10px; border: 1px solid #2d3a5e;">
+                    <h3>Отчет</h3>
+                    <p>Изучена блочная модель и Flexbox. Реализована сетка с использованием свойств: display, flex-direction, justify-content и других.</p>
+                </main>
+                <aside style="flex: 1; min-width: 200px; background: #111827; padding: 20px; border-radius: 10px; border: 1px solid #2d3a5e;">
+                    <h3>Статус</h3>
+                    <p>Студент: Тупик П.Н.</p>
+                    <p>Flexbox Froggy: 24/24</p>
+                </aside>
+            </div>
+
+            <footer style="background: #0a0f1a; padding: 15px; text-align: center; font-size: 0.8rem; border-top: 1px solid #2a3a55;">
+                Тупик Павел Николаевич, ПЗТ-43. 2026.
+            </footer>
+        </div>
+    </section>
+
+    <footer>
+        <div>Работа выполнена полностью. Комментарии к 15 свойствам добавлены в код CSS.</div>
+        <div style="margin-top: 10px;">Выполнил: Тупик П.Н. | ПЗТ-43</div>
+    </footer>
+</div>
+</body>
+</html>

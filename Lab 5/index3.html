@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адаптивная вёрстка - Вариант 0 | Тупик П.Н.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f172a;
+            color: #f1f5f9;
+            padding: 20px;
+        }
+        .adaptive {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            background: #1e293b;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            border: 1px solid #334155;
+        }
+        .header {
+            background: #0f172a;
+            color: #38bdf8;
+            text-align: center;
+            padding: 25px;
+            font-size: 20px;
+            font-weight: bold;
+            border-bottom: 2px solid #38bdf8;
+        }
+        .student-name {
+            font-size: 13px;
+            color: #fbbf24;
+            margin-top: 6px;
+            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .nav {
+            background: #334155;
+            text-align: center;
+            padding: 12px;
+        }
+        .nav a {
+            color: #f1f5f9;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        .nav a:hover {
+            background: #38bdf8;
+            color: #0f172a;
+        }
+
+        /* FLEX КОНТЕЙНЕР (Свойства 1-9) */
+        .row {
+            /* 1 display: */
+            display: flex;
+            /* 2 flex-direction: */
+            flex-direction: row;
+            /* 3 flex-wrap: */
+            flex-wrap: wrap;
+            /* 4 flex-flow: */
+            flex-flow: row wrap;
+            /* 5 justify-content: */
+            justify-content: flex-start;
+            /* 6 align-content: */
+            align-content: stretch;
+            /* 7 align-items: */
+            align-items: stretch;
+            /* 8 column-gap: */
+            column-gap: 12px;
+            /* 9 gap: */
+            gap: 12px;
+            
+            padding: 12px;
+        }
+
+        /* FLEX ЭЛЕМЕНТЫ (Свойства 10-15) */
+        .block {
+            background: #0f172a;
+            text-align: center;
+            padding: 55px 0;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            font-weight: 600;
+            color: #38bdf8;
+            transition: all 0.3s;
+
+            /* 10 flex-grow: */
+            flex-grow: 0;
+            /* 11 flex-shrink: */
+            flex-shrink: 1;
+            /* 12 flex-basis: */
+            flex-basis: auto;
+            /* 13 flex: */
+            flex: 0 1 auto;
+            /* 14 align-self: */
+            align-self: auto;
+            /* 15 order: */
+            order: 0;
+        }
+
+        .block:hover {
+            border-color: #fbbf24;
+            color: #fbbf24;
+            transform: translateY(-2px);
+        }
+
+        /* АДАПТИВНАЯ ЛОГИКА */
+        /* Десктоп: 3 колонки */
+        .block {
+            width: calc(33.333% - 8px);
+        }
+
+        /* Планшет: 2 колонки */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .block {
+                width: calc(50% - 6px);
+            }
+        }
+
+        /* Телефон: 1 колонка */
+        @media (max-width: 768px) {
+            .block {
+                width: 100%;
+            }
+            .nav a {
+                margin: 5px;
+                display: inline-block;
+            }
+        }
+
+        .footer {
+            background: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 20px;
+            font-size: 13px;
+            border-top: 1px solid #334155;
+        }
+        .social a {
+            color: #38bdf8;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .group-info {
+            background: #1e293b;
+            text-align: center;
+            padding: 12px;
+            font-size: 12px;
+            color: #64748b;
+            border-top: 1px solid #334155;
+        }
+    </style>
+</head>
+<body>
+    <div class="adaptive">
+        <div class="header">
+            Адаптивный макет
+            <div class="student-name">Тупик Павел Николаевич | ПЗТ-43 | Вариант 0</div>
+        </div>
+        <div class="nav">
+            <a href="#">Главная</a>
+            <a href="#">О нас</a>
+            <a href="#">Услуги</a>
+            <a href="#">Портфолио</a>
+            <a href="#">Блог</a>
+            <a href="#">Контакты</a>
+        </div>
+        <div class="row">
+            <div class="block">Блок 1</div>
+            <div class="block">Блок 4</div>
+            <div class="block">Блок 5</div>
+        </div>
+        <div class="row">
+            <div class="block">Блок 2</div>
+            <div class="block">Блок 3</div>
+            <div class="block">Блок 6</div>
+        </div>
+        <div class="footer">
+            <p>© 2026 Адаптивная вёрстка | Лабораторная работа №5</p>
+            <div class="social">
+                <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a>
+            </div>
+        </div>
+        <div class="group-info">
+            Выполнил: Тупик Павел Николаевич (ПЗТ-43). Все 15 свойств Flexbox прописаны в CSS.
+        </div>
+    </div>
+</body>
+</html>
