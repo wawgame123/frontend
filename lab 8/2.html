@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карточка товара | SafeVision Pro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .page-wrapper {
+            position: relative;
+            padding-bottom: 20px; 
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .bottom-layer {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            width: 96%;
+            height: 100px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            z-index: 1;
+        }
+
+        .product-card {
+            position: relative;
+            background: white;
+            width: 100%;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            z-index: 2;
+        }
+
+        .product-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr 280px;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .image-section {
+            position: relative;
+        }
+
+        .badges {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 3;
+        }
+
+        .badge {
+            padding: 4px 8px;
+            font-size: 10px;
+            color: white;
+            border-radius: 2px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .badge.hit { background-color: #ff9800; }
+        .badge.action { background-color: #e91e63; }
+
+        .main-img-container {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .main-img-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .thumbs {
+            display: flex;
+            gap: 10px;
+        }
+
+        .thumb {
+            width: 60px;
+            height: 60px;
+            border: 1px solid #eee;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .specs-section {
+            font-size: 14px;
+        }
+
+        .sku {
+            color: #999;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .spec-item {
+            display: flex;
+            margin-bottom: 8px;
+        }
+
+        .spec-label {
+            color: #999;
+            margin-right: 5px;
+        }
+
+        .all-specs {
+            color: #e91e63;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            border-bottom: 1px dashed #e91e63;
+        }
+
+        .buy-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            text-align: left;
+        }
+
+        .price {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .price span {
+            font-size: 16px;
+            font-weight: normal;
+        }
+
+        .stock-status {
+            color: #e91e63;
+            font-size: 13px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .delivery-note {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        .add-to-cart {
+            background-color: #e81c35;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 15px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .add-to-cart:hover {
+            background-color: #d81b60;
+        }
+
+        @media (max-width: 850px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-wrapper">
+    <div class="product-card">
+        <h1 class="product-title">Камера для улицы SafeVision Pro</h1>
+
+        <div class="main-layout">
+            <div class="image-section">
+                <div class="badges">
+                    <span class="badge hit">Хит</span>
+                    <span class="badge action">Акция</span>
+                </div>
+                <div class="main-img-container">
+                    <img src="/Images/main.png" alt="SafeVision Pro">
+                </div>
+                <div class="thumbs">
+                    <div class="thumb"><img src="/Images/main.png" alt=""></div>
+                    <div class="thumb"><img src="/Images/2.jpg" alt=""></div>
+                    <div class="thumb"><img src="/Images/3.jpg" alt=""></div>
+                    <div class="thumb"><img src="/Images/4.jpg" alt=""></div>
+                </div>
+            </div>
+
+            <div class="specs-section">
+                <span class="sku">Артикул: 2753867</span>
+                <div class="spec-item"><span class="spec-label">Разрешение:</span><span class="spec-value">720p</span></div>
+                <div class="spec-item"><span class="spec-label">Сжатие видео:</span><span class="spec-value">H.264</span></div>
+                <div class="spec-item"><span class="spec-label">Частота кадров:</span><span class="spec-value">100 к/с</span></div>
+                <div class="spec-item"><span class="spec-label">Объектив:</span><span class="spec-value">1.78 мм</span></div>
+                <div class="spec-item"><span class="spec-label">Защита от воды:</span><span class="spec-value">да</span></div>
+                <div class="spec-item"><span class="spec-label">Синхронизация:</span><span class="spec-value">внутренняя</span></div>
+                <div class="spec-item"><span class="spec-label">Угол обзора:</span><span class="spec-value">92°</span></div>
+                <a href="#" class="all-specs">Все характеристики</a>
+            </div>
+
+            <div class="buy-box">
+                <div class="price">96 000 <span>руб</span></div>
+                <span class="stock-status">В наличии</span>
+                <p class="delivery-note">Доставка будет осуществлена в течении двух недель с момента оформления заказа</p>
+                <button class="add-to-cart">В корзину</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bottom-layer"></div>
+</div>
+
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Адаптивная вёрстка - Вариант 0 | Тупик П.Н.</title>
+
     <style>
         * {
             margin: 0;
@@ -35,7 +35,7 @@
             font-weight: bold;
             border-bottom: 2px solid #38bdf8;
         }
-        .student-name {
+        .header .student-info {
             font-size: 13px;
             color: #fbbf24;
             margin-top: 6px;
@@ -43,10 +43,13 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+
+        /* НАВИГАЦИЯ */
         .nav {
             background: #334155;
             text-align: center;
             padding: 12px;
+            position: relative;
         }
         .nav a {
             color: #f1f5f9;
@@ -62,82 +65,116 @@
             color: #0f172a;
         }
 
-        /* FLEX КОНТЕЙНЕР (Свойства 1-9) */
-        .row {
-            /* 1 display: */
-            display: flex;
-            /* 2 flex-direction: */
-            flex-direction: row;
-            /* 3 flex-wrap: */
-            flex-wrap: wrap;
-            /* 4 flex-flow: */
-            flex-flow: row wrap;
-            /* 5 justify-content: */
-            justify-content: flex-start;
-            /* 6 align-content: */
-            align-content: stretch;
-            /* 7 align-items: */
-            align-items: stretch;
-            /* 8 column-gap: */
-            column-gap: 12px;
-            /* 9 gap: */
-            gap: 12px;
-            
-            padding: 12px;
+        /* БУРГЕР МЕНЮ (скрыто на десктопе) */
+        .burger-checkbox, .burger-icon {
+            display: none;
         }
 
-        /* FLEX ЭЛЕМЕНТЫ (Свойства 10-15) */
+        /* FLEX КОНТЕЙНЕР (9 свойств) */
+        .row {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            flex-flow: row wrap;
+            justify-content: flex-start;
+            align-content: stretch;
+            align-items: stretch;
+            column-gap: 0;
+            gap: 0; 
+            padding: 0;
+        }
+
+        /* FLEX ЭЛЕМЕНТЫ (6 свойств) */
         .block {
             background: #0f172a;
             text-align: center;
             padding: 55px 0;
-            border-radius: 12px;
             border: 1px solid #334155;
             font-weight: 600;
             color: #38bdf8;
             transition: all 0.3s;
-
-            /* 10 flex-grow: */
             flex-grow: 0;
-            /* 11 flex-shrink: */
             flex-shrink: 1;
-            /* 12 flex-basis: */
             flex-basis: auto;
-            /* 13 flex: */
             flex: 0 1 auto;
-            /* 14 align-self: */
             align-self: auto;
-            /* 15 order: */
             order: 0;
+            width: 50%;
         }
 
         .block:hover {
             border-color: #fbbf24;
             color: #fbbf24;
-            transform: translateY(-2px);
+            z-index: 1;
+            outline: 1px solid #fbbf24;
         }
 
         /* АДАПТИВНАЯ ЛОГИКА */
-        /* Десктоп: 3 колонки */
-        .block {
-            width: calc(33.333% - 8px);
-        }
 
-        /* Планшет: 2 колонки */
-        @media (max-width: 1024px) and (min-width: 769px) {
+        /* Ноутбуки: 3 колонки */
+        @media (max-width: 1200px) and (min-width: 769px) {
             .block {
-                width: calc(50% - 6px);
+                width: 33.333%;
             }
         }
 
-        /* Телефон: 1 колонка */
+        /* Телефоны: Бургер и 1 колонка */
         @media (max-width: 768px) {
+            .header .student-info {
+                display: none;
+            }
+            .header {
+                padding: 15px;
+            }
+
+            /* Логика бургера без JS */
+            .burger-icon {
+                display: block;
+                width: 30px;
+                height: 20px;
+                position: relative;
+                cursor: pointer;
+                margin: 0 auto;
+            }
+            .burger-icon span, .burger-icon span:before, .burger-icon span:after {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 3px;
+                background: #38bdf8;
+                position: absolute;
+                transition: 0.3s;
+            }
+            .burger-icon span:before { top: -8px; }
+            .burger-icon span:after { bottom: -8px; }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                padding-top: 15px;
+            }
+            .nav-links a {
+                margin: 5px 0;
+            }
+
+            /* Переключение по клику */
+            .burger-checkbox:checked ~ .nav-links {
+                display: flex;
+            }
+            .burger-checkbox:checked ~ .burger-icon span {
+                background: transparent;
+            }
+            .burger-checkbox:checked ~ .burger-icon span:before {
+                transform: rotate(45deg);
+                top: 0;
+            }
+            .burger-checkbox:checked ~ .burger-icon span:after {
+                transform: rotate(-45deg);
+                bottom: 0;
+            }
+
             .block {
                 width: 100%;
-            }
-            .nav a {
-                margin: 5px;
-                display: inline-block;
             }
         }
 
@@ -148,11 +185,6 @@
             padding: 20px;
             font-size: 13px;
             border-top: 1px solid #334155;
-        }
-        .social a {
-            color: #38bdf8;
-            margin: 0 10px;
-            text-decoration: none;
         }
         .group-info {
             background: #1e293b;
@@ -165,37 +197,35 @@
     </style>
 </head>
 <body>
-    <div class="adaptive">
-        <div class="header">
-            Адаптивный макет
-            <div class="student-name">Тупик Павел Николаевич | ПЗТ-43 | Вариант 0</div>
-        </div>
         <div class="nav">
-            <a href="#">Главная</a>
-            <a href="#">О нас</a>
-            <a href="#">Услуги</a>
-            <a href="#">Портфолио</a>
-            <a href="#">Блог</a>
-            <a href="#">Контакты</a>
-        </div>
-        <div class="row">
-            <div class="block">Блок 1</div>
-            <div class="block">Блок 4</div>
-            <div class="block">Блок 5</div>
-        </div>
-        <div class="row">
-            <div class="block">Блок 2</div>
-            <div class="block">Блок 3</div>
-            <div class="block">Блок 6</div>
-        </div>
-        <div class="footer">
-            <p>© 2026 Адаптивная вёрстка | Лабораторная работа №5</p>
-            <div class="social">
-                <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a>
+            <input type="checkbox" id="burger" class="burger-checkbox">
+            <label for="burger" class="burger-icon">
+                <span></span>
+            </label>
+            <div class="nav-links">
+                <a href="#">Главная</a>
+                <a href="#">О нас</a>
+                <a href="#">Услуги</a>
+                <a href="#">Портфолио</a>
+                <a href="#">Блог</a>
+                <a href="#">Контакты</a>
             </div>
         </div>
+        
+        <div class="row">
+            <div class="block">Блок 1</div>
+            <div class="block">Блок 2</div>
+            <div class="block">Блок 3</div>
+            <div class="block">Блок 4</div>
+            <div class="block">Блок 5</div>
+            <div class="block">Блок 6</div>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 Адаптивная вёрстка | Лабораторная работа №5</p>
+        </div>
         <div class="group-info">
-            Выполнил: Тупик Павел Николаевич (ПЗТ-43). Все 15 свойств Flexbox прописаны в CSS.
+            Выполнил: Тупик Павел Николаевич (ПЗТ-43). Все 15 свойств Flexbox включены.
         </div>
     </div>
 </body>

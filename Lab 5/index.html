@@ -3,191 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Лабораторная работа №5: Блочная модель и Flexbox | Тупик П.Н.</title>
+    <title>ЛР №5: Блочная модель и Flexbox | Тупик П.Н.</title>
     <style>
-        /* ОБЩИЕ СТИЛИ 
-           Цветовая схема: тёмно-синий и золотой
-        */
+        /* ОБЩИЕ СТИЛИ */
         body {
-            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-            background: #0a0f1e;
-            color: #eef2ff;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #0f172a;
+            color: #f1f5f9;
             margin: 0;
-            padding: 24px;
+            padding: 40px 24px;
             line-height: 1.6;
         }
         .container {
-            max-width: 1280px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         h1 {
             text-align: center;
-            color: #FFB347;
-            font-size: 2.4rem;
+            color: #38bdf8;
+            font-size: 2.2rem;
             margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
         .subtitle {
             text-align: center;
-            color: #8a9bb5;
+            color: #94a3b8;
             margin-bottom: 40px;
             padding-bottom: 20px;
-            border-bottom: 1px solid rgba(255, 180, 71, 0.3);
-            font-size: 1.1rem;
+            border-bottom: 1px solid #334155;
         }
         section {
-            background: rgba(18, 25, 45, 0.9);
-            border-radius: 24px;
-            padding: 24px;
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 30px;
             margin-bottom: 32px;
-            border: 1px solid rgba(255, 180, 71, 0.2);
+            border: 1px solid #334155;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
         }
         h2 {
-            color: #FFB347;
-            border-left: 4px solid #FF8C00;
-            padding-left: 18px;
+            color: #fbbf24;
+            border-left: 4px solid #38bdf8;
+            padding-left: 15px;
             margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
         }
-        h3 { color: #FFD966; margin-bottom: 12px; }
         
-        .demo-box {
-            background: #0f1629;
-            border-radius: 20px;
-            padding: 20px;
-            margin: 24px 0;
-            border: 1px solid #2a3a55;
-        }
-
-        /* БЛОК С ФЛЕКС-КОНТЕЙНЕРОМ 
-        */
-        .flex-container-demo {
-            /* 1 display: */
-            display: flex;
-            /* 2 flex-direction: */
-            flex-direction: row;
-            /* 3 flex-wrap: */
-            flex-wrap: wrap;
-            /* 4 flex-flow: direction wrap */
-            flex-flow: row wrap;
-            /* 5 justify-content: */
-            justify-content: space-between;
-            /* 6 align-content: */
-            align-content: stretch;
-            /* 7 align-items: */
-            align-items: center;
-            /* 8 column-gap: */
-            column-gap: 20px;
-            /* 9 gap: */
-            gap: 20px;
-            
-            background: #161e35;
-            padding: 20px;
-            border-radius: 12px;
-        }
-
-        /* БЛОК С ФЛЕКС-ЭЛЕМЕНТАМИ 
-        */
-        .flex-item-demo {
-            /* 10 flex-grow: */
-            flex-grow: 1;
-            /* 11 flex-shrink: */
-            flex-shrink: 1;
-            /* 12 flex-basis: */
-            flex-basis: auto;
-            /* 13 flex: {grow shrink basis} */
-            flex: 1 1 auto;
-            /* 14 align-self: */
-            align-self: auto;
-            /* 15 order: */
-            order: 0;
-
-            background: #FFB347;
-            color: #000;
-            padding: 15px;
-            text-align: center;
+        /*    1. БЛОЧНАЯ МОДЕЛЬ  */
+        
+       
+        .box-model-demo {
+            background: #0f172a;
             border-radius: 8px;
-            font-weight: bold;
+            padding: 20px;
+            text-align: center;
+        }
+        .visual-box {
+            /* Применяем теорию блочной модели */
+            width: 200px;
+            height: 100px;
+            padding: 25px;
+            border: 8px solid #fbbf24;
+            margin: 30px auto;
+            
+            background: #38bdf8;
+            color: #0f172a;
+            font-weight: 900;
+            line-height: 100px;
+            box-sizing: content-box; /* Стандартная модель */
         }
 
-        footer {
+        /* 2. FLEXBOX PROPERTIES (1-15) */
+        .flex-container-demo {
+            /* Свойства контейнера */
+            display: flex;                /* 1. Включение flex */
+            flex-direction: row;          /* 2. Направление оси */
+            flex-wrap: wrap;              /* 3. Перенос элементов */
+            flex-flow: row wrap;          /* 4. Сокращение (1+2) */
+            justify-content: center;      /* 5. Выравнивание по главной оси */
+            align-content: stretch;       /* 6. Выравнивание строк */
+            align-items: center;          /* 7. Выравнивание по поперечной оси */
+            column-gap: 20px;             /* 8. Расстояние между колонками */
+            gap: 20px;                    /* 9. Общий интервал */
+
+            background: #111827;
+            padding: 25px;
+            border-radius: 10px;
+            min-height: 150px;
+        }
+
+        .flex-item {
+            /* Свойства элементов */
+            flex-grow: 1;                 /* 10. Коэффициент роста */
+            flex-shrink: 1;               /* 11. Коэффициент сжатия */
+            flex-basis: 200px;            /* 12. Базовый размер */
+            flex: 1 1 200px;              /* 13. Сокращение (10+11+12) */
+            align-self: auto;             /* 14. Индивидуальное выравнивание */
+            order: 0;                     /* 15. Порядок в потоке */
+
+            background: #334155;
+            border: 1px solid #38bdf8;
+            color: #38bdf8;
+            padding: 20px;
             text-align: center;
-            padding: 24px;
-            color: #6a7c9f;
-            border-top: 1px solid #1f2a40;
-            margin-top: 40px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        /*  3. АВТОРСКИЙ МАКЕТ */
+        .layout-wrapper {
+            background: #0f172a;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #38bdf8;
+        }
+        .layout-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background: #1e293b;
+            border-bottom: 2px solid #38bdf8;
+        }
+        .layout-body {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px; 
+            background: #334155;
+        }
+        .layout-main {
+            flex: 3;
+            min-width: 300px;
+            background: #0f172a;
+            padding: 30px;
+        }
+        .layout-side {
+            flex: 1;
+            min-width: 200px;
+            background: #111827;
+            padding: 30px;
+            border-left: 1px solid #334155;
+        }
+        .layout-footer {
+            background: #1e293b;
+            text-align: center;
+            padding: 15px;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            border-top: 1px solid #334155;
+        }
+
+        footer.page-footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+            color: #64748b;
         }
     </style>
 </head>
 <body>
+
 <div class="container">
     <h1>Лабораторная работа №5</h1>
     <div class="subtitle">
-        <div>Выполнил: Тупик Павел Николаевич</div>
+        <div>Разработчик: Тупик Павел Николаевич</div>
         <div>Группа: ПЗТ-43</div>
-        <div style="margin-top: 12px;">Блочная модель + Flexbox - исследование свойств</div>
+        <div style="margin-top: 8px; font-size: 0.9rem; color: #38bdf8;">Исследование Box Model и гибких контейнеров</div>
     </div>
 
     <section>
-        <h2>1. Блочная модель</h2>
-        <div class="demo-box">
-            <div style="
-                width: 200px; height: 80px;
-                padding: 20px; border: 5px solid #FFD966;
-                margin: 20px auto; background: #FF8C00;
-                text-align: center; line-height: 80px; font-weight: bold;
-            ">
-                BLOCK
-            </div>
-            <p>Параметры: Content (200x80) + Padding (20) + Border (5). Общая ширина: 250px.</p>
+        <h2>1. Блочная модель (Box Model)</h2>
+        <div class="box-model-demo">
+            <div class="visual-box">BOX</div>
+            <p style="font-size: 0.9rem; color: #94a3b8;">
+                Расчет итогового размера: Content (200) + Padding (25*2) + Border (8*2) = 266px ширина.
+            </p>
         </div>
     </section>
 
     <section>
-        <h2>2. Flexbox Container & Elements</h2>
-        
-        <div class="demo-box">
-            <h3>Демонстрация свойств контейнера (1-9) и элементов (10-15)</h3>
-            <div class="flex-container-demo">
-                <div class="flex-item-demo">Элемент 1</div>
-                <div class="flex-item-demo" style="order: -1; background: #FFD966;">Элемент 2 (Order -1)</div>
-                <div class="flex-item-demo" style="flex-grow: 2;">Элемент 3 (Grow 2)</div>
-            </div>
+        <h2>2. Flexbox: 15 ключевых свойств</h2>
+        <div class="flex-container-demo">
+            <div class="flex-item" style="order: 2;">Элемент A (Order 2)</div>
+            <div class="flex-item" style="flex-grow: 2; border-color: #fbbf24; color: #fbbf24;">Элемент B (Grow 2)</div>
+            <div class="flex-item" style="order: 1;">Элемент C (Order 1)</div>
         </div>
     </section>
 
     <section>
-        <h2>3. Макет на Flexbox</h2>
-        <div style="background: #0b1120; border-radius: 15px; overflow: hidden; border: 1px solid #2a3a55;">
-            
-            <header style="display: flex; justify-content: space-between; align-items: center; padding: 20px; background: #0f172a; border-bottom: 2px solid #FFB347;">
+        <h2>3. Финальный макет</h2>
+        <div class="layout-wrapper">
+            <header class="layout-header">
                 <div>
-                    <h3 style="margin: 0; color: #FFB347;">Тупик Павел</h3>
-                    <div style="font-size: 0.9rem; color: #8a9bb5;">Frontend / ПЗТ-43</div>
+                    <h3 style="margin: 0; color: #38bdf8;">ТУПИК П.Н.</h3>
+                    <span style="font-size: 0.8rem; color: #94a3b8;">Frontend Девелопмент</span>
                 </div>
-                <div style="border: 1px solid #FFB347; padding: 5px 15px; border-radius: 20px; color: #FFB347;">ЛР 5</div>
+                <div style="font-weight: bold; color: #fbbf24;">ВАРИАНТ 0</div>
             </header>
 
-            <div style="display: flex; flex-wrap: wrap; gap: 20px; padding: 20px;">
-                <main style="flex: 3; min-width: 280px; background: #111827; padding: 20px; border-radius: 10px; border: 1px solid #2d3a5e;">
-                    <h3>Отчет</h3>
-                    <p>Изучена блочная модель и Flexbox. Реализована сетка с использованием свойств: display, flex-direction, justify-content и других.</p>
+            <div class="layout-body">
+                <main class="layout-main">
+                    <h3 style="color: #fbbf24;">Технический отчет</h3>
+                    <p>В данной работе были применены методы гибкой верстки. Основная колонка использует свойство <code>flex: 3</code>, что позволяет ей занимать приоритетное пространство в контейнере.</p>
                 </main>
-                <aside style="flex: 1; min-width: 200px; background: #111827; padding: 20px; border-radius: 10px; border: 1px solid #2d3a5e;">
-                    <h3>Статус</h3>
-                    <p>Студент: Тупик П.Н.</p>
-                    <p>Flexbox Froggy: 24/24</p>
+                <aside class="layout-side">
+                    <h3 style="color: #38bdf8;">Статус</h3>
+                    <p>Студент: Тупик П.Н.<br>Группа: ПЗТ-43<br>Flexbox Froggy: 24/24</p>
                 </aside>
             </div>
 
-            <footer style="background: #0a0f1a; padding: 15px; text-align: center; font-size: 0.8rem; border-top: 1px solid #2a3a55;">
-                Тупик Павел Николаевич, ПЗТ-43. 2026.
+            <footer class="layout-footer">
+                © 2026 Тупик Павел Николаевич. Все права защищены.
             </footer>
         </div>
     </section>
 
-    <footer>
-        <div>Работа выполнена полностью. Комментарии к 15 свойствам добавлены в код CSS.</div>
-        <div style="margin-top: 10px;">Выполнил: Тупик П.Н. | ПЗТ-43</div>
+    <footer class="page-footer">
+        <p>Работа выполнена в полном объеме. Все 15 свойств Flexbox интегрированы в CSS-код макета.</p>
     </footer>
 </div>
+
 </body>
 </html>

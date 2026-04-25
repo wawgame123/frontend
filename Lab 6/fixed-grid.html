@@ -2,9 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Фиксированная вёрстка (Grid) - Вариант 0 | Тупик П.Н.</title>
+    <title>Фиксированная вёрстка (Grid) | Тупик П.Н.</title>
     <style>
-        /* Базовые настройки */
         * {
             margin: 0;
             padding: 0;
@@ -17,7 +16,6 @@
             font-family: 'Segoe UI', system-ui, sans-serif;
         }
 
-        /* ФИКСИРОВАННЫЙ КОНТЕЙНЕР */
         .wrapper {
             width: 1280px;
             margin: 0 auto;
@@ -28,7 +26,6 @@
             overflow: hidden;
         }
 
-        /* ШАПКА */
         .header {
             background: #0f172a;
             color: #38bdf8;
@@ -48,7 +45,6 @@
             opacity: 0.8;
         }
 
-        /* НАВИГАЦИЯ */
         .nav {
             background: #334155;
             text-align: center;
@@ -66,33 +62,20 @@
             color: #38bdf8;
         }
 
-        /* GRID КОНТЕЙНЕР (Свойства 1-10) */
         .grid {
-            /* 1 display: */
             display: grid;
-            /* 2 grid-template-columns: фиксированная колонка 500px + остаток */
-            grid-template-columns: 500px 1fr;
-            /* 3 grid-template-rows: */
+            grid-template-columns: 500px 780px;
             grid-template-rows: repeat(3, auto);
-            /* 4 grid-template-areas: */
             grid-template-areas: none;
-            /* 5 column-gap: */
             column-gap: 0px;
-            /* 6 row-gap: */
             row-gap: 0px;
-            /* 7 gap: */
             gap: 0px;
-            /* 8 justify-items: */
             justify-items: stretch;
-            /* 9 align-items: */
             align-items: stretch;
-            /* 10 place-items: */
             place-items: stretch;
-            
             background: #1e293b;
         }
 
-        /* GRID ЭЛЕМЕНТЫ (Свойства 11-15) */
         .grid-item {
             background: #0f172a;
             text-align: center;
@@ -101,20 +84,13 @@
             color: #38bdf8;
             font-weight: bold;
             transition: background 0.3s;
-
-            /* 11 grid-column: */
             grid-column: auto;
-            /* 12 grid-row: */
             grid-row: auto;
-            /* 13 justify-self: */
             justify-self: stretch;
-            /* 14 align-self: */
             align-self: auto;
-            /* 15 place-self: */
             place-self: auto;
         }
 
-        /* Стилизация четных блоков для визуального разделения */
         .grid-item:nth-child(even) {
             background: #111827;
             color: #fbbf24;
@@ -124,7 +100,6 @@
             background: #1e293b;
         }
 
-        /* ПОДВАЛ */
         .footer {
             background: #0f172a;
             color: #94a3b8;
@@ -144,12 +119,7 @@
     </style>
 </head>
 <body>
-    <div class="wrapper">
-        <header class="header">
-            <h1>ЛАБОРАТОРНАЯ РАБОТА №5</h1>
-            <div class="student-name">Тупик Павел Николаевич | Группа ПЗТ-43 | Вариант 0</div>
-        </header>
-        
+   
         <nav class="nav">
             <a href="#">ГЛАВНАЯ</a>
             <a href="#">О НАС</a>
@@ -160,15 +130,15 @@
 
         <div class="grid">
             <div class="grid-item">БЛОК 1 (500px)</div>
-            <div class="grid-item">БЛОК 4 (ОСТАТОК)</div>
+            <div class="grid-item">БЛОК 4 (780px)</div>
             <div class="grid-item">БЛОК 2 (500px)</div>
-            <div class="grid-item">БЛОК 5 (ОСТАТОК)</div>
+            <div class="grid-item">БЛОК 5 (780px)</div>
             <div class="grid-item">БЛОК 3 (500px)</div>
-            <div class="grid-item">БЛОК 6 (ОСТАТОК)</div>
+            <div class="grid-item">БЛОК 6 (780px)</div>
         </div>
 
         <footer class="footer">
-            <p>© 2026 Фиксированная вёрстка на Grid Layout</p>
+            <p>© 2026 Фиксированная вёрстка на Grid Layout (1280px)</p>
         </footer>
         
         <div class="footer-info">

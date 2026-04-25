@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Фиксированная вёрстка - Вариант 0 | Познанский А.А.</title>
+    <title>Фиксированная вёрстка - Вариант 0 | Тупик П.Н.</title>
     <style>
         * {
             margin: 0;
@@ -10,109 +10,159 @@
             box-sizing: border-box;
         }
         body {
-            font-family: Arial, sans-serif;
-            background: #e8e8e8;
-            padding: 20px;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #0f172a;
+            color: #f1f5f9;
+            padding: 40px 20px;
         }
         .fixed {
             width: 1280px;
             margin: 0 auto;
-            background: #ffffff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: #1e293b;
+            border: 1px solid #334155;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            overflow: hidden;
         }
         .header {
-            background: #34495e;
-            color: white;
+            background: #0f172a;
+            color: #38bdf8;
             text-align: center;
-            padding: 20px;
+            padding: 30px;
+            border-bottom: 2px solid #38bdf8;
         }
         .student-name {
             font-size: 14px;
-            color: #f1c40f;
-            margin-top: 8px;
+            color: #94a3b8;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         .nav {
-            background: #2ecc71;
+            background: #334155;
             text-align: center;
-            padding: 12px;
+            padding: 15px;
         }
         .nav a {
-            color: white;
-            margin: 0 15px;
+            color: #f1f5f9;
+            margin: 0 20px;
             text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
         }
+        .nav a:hover {
+            color: #38bdf8;
+        }
+
+        /* Flex-контейнер для строк макета */
         .row {
+            /* 1 display: */
             display: flex;
+            /* 2 flex-direction: */
+            flex-direction: row;
+            /* 3 flex-wrap: */
+            flex-wrap: nowrap;
+            /* 4 flex-flow: direction wrap */
+            flex-flow: row nowrap;
+            /* 5 justify-content: */
+            justify-content: stretch;
+            /* 6 align-content: */
+            align-content: stretch;
+            /* 7 align-items: */
+            align-items: stretch;
+            /* 8 column-gap: */
+            column-gap: 0px;
+            /* 9 gap: */
+            gap: 0px;
+            border-bottom: 1px solid #334155;
         }
-        .block-1, .block-2, .block-3 {
+
+        /* Фиксированные блоки слева */
+        .block-left {
             width: 500px;
-            background: #ecf0f1;
+            background: #1e293b;
             text-align: center;
-            padding: 60px 0;
-            border: 1px solid #bdc3c7;
+            padding: 70px 0;
+            border-right: 1px solid #334155;
+            color: #38bdf8;
+            font-weight: bold;
+            /* 11 flex-shrink: */
+            flex-shrink: 0;
+            /* 12 flex-basis: */
+            flex-basis: 500px;
         }
-        .block-4, .block-5, .block-6 {
-            flex: 1;
-            background: #ecf0f1;
+
+        /* Растягивающиеся блоки справа */
+        .block-right {
+            background: #111827;
             text-align: center;
-            padding: 60px 0;
-            border: 1px solid #bdc3c7;
+            padding: 70px 0;
+            color: #94a3b8;
+            /* 10 flex-grow: */
+            flex-grow: 1;
+            /* 13 flex: {grow shrink basis} */
+            flex: 1 1 auto;
+            /* 14 align-self: */
+            align-self: auto;
+            /* 15 order: */
+            order: 0;
         }
+
         .footer {
-            background: #34495e;
-            color: white;
+            background: #0f172a;
+            color: #f1f5f9;
             text-align: center;
-            padding: 20px;
+            padding: 25px;
         }
+        .social { margin-top: 10px; }
         .social a {
-            color: #f1c40f;
+            color: #38bdf8;
             margin: 0 10px;
             text-decoration: none;
+            font-size: 0.9rem;
         }
         .group-info {
-            background: #ecf0f1;
+            background: #334155;
             text-align: center;
-            padding: 8px;
+            padding: 10px;
             font-size: 13px;
-            color: #2c3e50;
-            border-top: 1px solid #bdc3c7;
+            color: #cbd5e1;
+            border-top: 1px solid #475569;
         }
     </style>
 </head>
 <body>
-    <div class="fixed">
-        <div class="header">
-            Шапка (логотип)
-            <div class="student-name">Познанский Андрей Александрович | ПЗТ-43</div>
-        </div>
         <div class="nav">
-            <a href="#">Главная</a>
-            <a href="#">О нас</a>
-            <a href="#">Услуги</a>
-            <a href="#">Портфолио</a>
-            <a href="#">Блог</a>
-            <a href="#">Контакты</a>
+            <a href="#">ГЛАВНАЯ</a>
+            <a href="#">О НАС</a>
+            <a href="#">УСЛУГИ</a>
+            <a href="#">КОНТАКТЫ</a>
         </div>
+
         <div class="row">
-            <div class="block-1">1 (500px)</div>
-            <div class="block-4">4 (оставшаяся часть)</div>
+            <div class="block-left">БЛОК 1 (500px)</div>
+            <div class="block-right">БЛОК 4 (AUTO)</div>
         </div>
+        
         <div class="row">
-            <div class="block-2">2 (500px)</div>
-            <div class="block-5">5 (оставшаяся часть)</div>
+            <div class="block-left">БЛОК 2 (500px)</div>
+            <div class="block-right">БЛОК 5 (AUTO)</div>
         </div>
+        
         <div class="row">
-            <div class="block-3">3 (500px)</div>
-            <div class="block-6">6 (оставшаяся часть)</div>
+            <div class="block-left">БЛОК 3 (500px)</div>
+            <div class="block-right">БЛОК 6 (AUTO)</div>
         </div>
+
         <div class="footer">
-            <p>© 2026 Фиксированная вёрстка</p>
+            <p>© 2026 ФИКСИРОВАННАЯ ВЁРСТКА</p>
             <div class="social">
-                <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a>
+                <a href="#">FACEBOOK</a> | <a href="#">INSTAGRAM</a> | <a href="#">TWITTER</a>
             </div>
         </div>
+
         <div class="group-info">
-            Выполнил: Познанский Андрей Александрович, группа ПЗТ-43 | Вариант 0
+            Разработка: Тупик Павел Николаевич, ПЗТ-43 | Вариант 0 | Все 15 свойств Flexbox включены в CSS
         </div>
     </div>
 </body>

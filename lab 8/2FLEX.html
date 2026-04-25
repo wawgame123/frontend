@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адаптивная карточка в макете</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f172a; color: #f1f5f9; padding: 20px; }
+        .adaptive { width: 100%; max-width: 1280px; margin: 0 auto; background: #1e293b; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.4); border: 1px solid #334155; }
+        .header { background: #0f172a; color: #38bdf8; text-align: center; padding: 25px; font-size: 20px; font-weight: bold; border-bottom: 2px solid #38bdf8; }
+        .header .student-info { font-size: 13px; color: #fbbf24; margin-top: 6px; font-weight: normal; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .nav { background: #334155; text-align: center; padding: 12px; position: relative; }
+        .nav a { color: #f1f5f9; margin: 0 15px; text-decoration: none; font-size: 14px; padding: 6px 12px; border-radius: 4px; transition: all 0.3s; }
+        .nav a:hover { background: #38bdf8; color: #0f172a; }
+        .burger-checkbox, .burger-icon { display: none; }
+        
+        .row { display: flex; flex-direction: row; flex-wrap: wrap; flex-flow: row wrap; justify-content: flex-start; align-content: stretch; align-items: stretch; column-gap: 0; gap: 0; padding: 0; }
+        .block { background: #0f172a; text-align: center; padding: 55px 20px; border: 1px solid #334155; font-weight: 600; color: #38bdf8; transition: all 0.3s; flex-grow: 0; flex-shrink: 1; flex-basis: auto; flex: 0 1 auto; align-self: auto; order: 0; width: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .block:hover { border-color: #fbbf24; color: #fbbf24; z-index: 1; outline: 1px solid #fbbf24; }
+
+        .page-wrapper { position: relative; padding-bottom: 20px; width: 100%; text-align: left; margin: auto; }
+        .bottom-layer { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); background: white; width: 96%; height: 100px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); z-index: 1; }
+        .product-card { position: relative; background: white; width: 100%; padding: 30px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); z-index: 2; color: #333; }
+        .product-title { font-size: 24px; font-weight: 700; margin-bottom: 30px; color: #333; }
+        .main-layout { display: grid; grid-template-columns: 1fr 1fr 280px; gap: 20px; align-items: start; }
+        .image-section { position: relative; }
+        .badges { position: absolute; top: 0; left: 0; display: flex; flex-direction: column; gap: 5px; z-index: 3; }
+        .badge { padding: 4px 8px; font-size: 10px; color: white; border-radius: 2px; text-transform: uppercase; font-weight: bold; }
+        .badge.hit { background-color: #ff9800; }
+        .badge.action { background-color: #e91e63; }
+        .main-img-container { width: 100%; margin-bottom: 20px; }
+        .main-img-container img { width: 100%; height: auto; display: block; }
+        .thumbs { display: flex; gap: 10px; flex-wrap: wrap; }
+        .thumb { width: 60px; height: 60px; border: 1px solid #eee; padding: 5px; cursor: pointer; }
+        .thumb img { width: 100%; height: 100%; object-fit: contain; }
+        .specs-section { font-size: 14px; font-weight: normal; }
+        .sku { color: #999; margin-bottom: 20px; display: block; }
+        .spec-item { display: flex; margin-bottom: 8px; }
+        .spec-label { color: #999; margin-right: 5px; }
+        .all-specs { color: #e91e63; text-decoration: none; display: inline-block; margin-top: 20px; border-bottom: 1px dashed #e91e63; }
+        .buy-box { background: #f9f9f9; padding: 25px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-align: left; border: 1px solid #eee; font-weight: normal; }
+        .price { font-size: 28px; font-weight: 700; margin-bottom: 10px; color: #333; }
+        .price span { font-size: 16px; font-weight: normal; }
+        .stock-status { color: #e91e63; font-size: 13px; margin-bottom: 20px; display: block; }
+        .delivery-note { font-size: 12px; color: #666; line-height: 1.5; margin-bottom: 30px; }
+        .add-to-cart { background-color: #e81c35; color: white; border: none; width: 100%; padding: 15px; border-radius: 25px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+        .add-to-cart:hover { background-color: #d81b60; }
+        
+        .developer-name { font-size: 18px; line-height: 1.5; color: #f1f5f9; }
+        .developer-name span { color: #38bdf8; display: block; margin-top: 10px; font-size: 22px; }
+        .profile-photo { max-width: 200px; width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 2px solid #38bdf8; }
+
+        @media (max-width: 1400px) {
+            .main-layout { grid-template-columns: 1fr 1fr; }
+            .buy-box { grid-column: span 2; }
+        }
+        @media (max-width: 1200px) and (min-width: 769px) {
+            .block { width: 33.333%; }
+            .main-layout { grid-template-columns: 1fr; }
+            .buy-box { grid-column: span 1; }
+        }
+        @media (max-width: 850px) {
+            .main-layout { grid-template-columns: 1fr; }
+            .buy-box { grid-column: span 1; }
+        }
+        @media (max-width: 768px) {
+            .header .student-info { display: none; }
+            .header { padding: 15px; }
+            .burger-icon { display: block; width: 30px; height: 20px; position: relative; cursor: pointer; margin: 0 auto; }
+            .burger-icon span, .burger-icon span:before, .burger-icon span:after { content: ''; display: block; width: 100%; height: 3px; background: #38bdf8; position: absolute; transition: 0.3s; }
+            .burger-icon span:before { top: -8px; }
+            .burger-icon span:after { bottom: -8px; }
+            .nav-links { display: none; flex-direction: column; padding-top: 15px; }
+            .nav-links a { margin: 5px 0; }
+            .burger-checkbox:checked ~ .nav-links { display: flex; }
+            .burger-checkbox:checked ~ .burger-icon span { background: transparent; }
+            .burger-checkbox:checked ~ .burger-icon span:before { transform: rotate(45deg); top: 0; }
+            .burger-checkbox:checked ~ .burger-icon span:after { transform: rotate(-45deg); bottom: 0; }
+            .block { width: 100%; }
+            .main-layout { grid-template-columns: 1fr; }
+            .buy-box { grid-column: span 1; }
+        }
+
+        .footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 20px; font-size: 13px; border-top: 1px solid #334155; }
+        .group-info { background: #1e293b; text-align: center; padding: 12px; font-size: 12px; color: #64748b; border-top: 1px solid #334155; }
+    </style>
+</head>
+<body>
+        <div class="nav">
+            <input type="checkbox" id="burger" class="burger-checkbox">
+            <label for="burger" class="burger-icon">
+                <span></span>
+            </label>
+            <div class="nav-links">
+                <a href="#">Главная</a>
+                <a href="#">О нас</a>
+                <a href="#">Услуги</a>
+                <a href="#">Портфолио</a>
+                <a href="#">Блог</a>
+                <a href="#">Контакты</a>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="block">
+                <div class="page-wrapper">
+                    <div class="product-card">
+                        <h1 class="product-title">Камера для улицы SafeVision Pro</h1>
+
+                        <div class="main-layout">
+                            <div class="image-section">
+                                <div class="badges">
+                                    <span class="badge hit">Хит</span>
+                                    <span class="badge action">Акция</span>
+                                </div>
+                                <div class="main-img-container">
+                                    <img src="/Images/main.png" alt="SafeVision Pro">
+                                </div>
+                                <div class="thumbs">
+                                    <div class="thumb"><img src="/Images/main.png" alt=""></div>
+                                    <div class="thumb"><img src="/Images/2.jpg" alt=""></div>
+                                    <div class="thumb"><img src="/Images/3.jpg" alt=""></div>
+                                    <div class="thumb"><img src="/Images/4.jpg" alt=""></div>
+                                </div>
+                            </div>
+
+                            <div class="specs-section">
+                                <span class="sku">Артикул: 2753867</span>
+                                <div class="spec-item"><span class="spec-label">Разрешение:</span><span class="spec-value">720p</span></div>
+                                <div class="spec-item"><span class="spec-label">Сжатие видео:</span><span class="spec-value">H.264</span></div>
+                                <div class="spec-item"><span class="spec-label">Частота кадров:</span><span class="spec-value">100 к/с</span></div>
+                                <div class="spec-item"><span class="spec-label">Объектив:</span><span class="spec-value">1.78 мм</span></div>
+                                <div class="spec-item"><span class="spec-label">Защита от воды:</span><span class="spec-value">да</span></div>
+                                <div class="spec-item"><span class="spec-label">Синхронизация:</span><span class="spec-value">внутренняя</span></div>
+                                <div class="spec-item"><span class="spec-label">Угол обзора:</span><span class="spec-value">92°</span></div>
+                                <a href="#" class="all-specs">Все характеристики</a>
+                            </div>
+
+                            <div class="buy-box">
+                                <div class="price">96 000 <span>руб</span></div>
+                                <span class="stock-status">В наличии</span>
+                                <p class="delivery-note">Доставка будет осуществлена в течении двух недель с момента оформления заказа</p>
+                                <button class="add-to-cart">В корзину</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom-layer"></div>
+                </div>
+            </div>
+            
+            <div class="block">
+                <div class="developer-name">
+                    Разработал:
+                    <span>Тупик Павел Николаевич, Лабораторная работа №8 по предмету "Программные средства создания Internet-приложений"</span>
+                </div>
+            </div>
+            
+            <div class="block" style="padding: 20px;">
+                <img src="/Images/vibecat1.jpg" alt="Фото кота" class="profile-photo">
+            </div>
+            
+            <div class="block">Блок 4</div>
+            <div class="block">Блок 5</div>
+            <div class="block">Блок 6</div>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 Адаптивная вёрстка | Лабораторная работа №5</p>
+        </div>
+        <div class="group-info">
+            Выполнил: Тупик Павел Николаевич (ПЗТ-43). Все 15 свойств Flexbox включены.
+        </div>
+    </div>
+</body>
+</html>
